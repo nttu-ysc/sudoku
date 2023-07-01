@@ -10,7 +10,7 @@ go install github.com/nttu-ysc/sudoku@latest
 
 ## Docker 
 
-Run fellowing command building the tool
+Run following command building the tool
 ```shell
 docker build -t sudoku .
 ```
