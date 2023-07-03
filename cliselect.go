@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"time"
+	"sync"
 
 	"github.com/nttu-ysc/sudoku/pkg/sudoku"
 
@@ -26,6 +26,8 @@ var keys = map[byte]bool{
 	right: true,
 	left:  true,
 }
+
+var lock = sync.Mutex{}
 
 type Cli struct {
 	Sudoku    [9][9]int
@@ -77,8 +79,8 @@ R: Reset the grid.
 
 	var canInteractive bool = true
 	for canInteractive {
-		// fmt.Print(row)
 		keyCode := getInput()
+		lock.Lock()
 		for i := 0; i < row; i++ {
 			fmt.Print("\033[K\033[A\033[K")
 		}
@@ -140,7 +142,7 @@ R: Reset the grid.
 			c.Sudoku = [9][9]int{}
 		}
 		row += printGrid(c.Sudoku, c.CursorPos)
-		time.Sleep(10 * time.Millisecond)
+		lock.Unlock()
 	}
 	fmt.Println("Sudoku has completed.")
 }
