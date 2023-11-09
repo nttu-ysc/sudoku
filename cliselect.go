@@ -61,7 +61,7 @@ func (c *Cli) Display() {
                                        /____/                            
 
 Author: Shun
-GitHub: https://github.com/nttu-ysc/suduku
+GitHub: https://github.com/nttu-ysc/sudoku
 
 This is a Sudoku solving tool.
 Here are some instructions:
